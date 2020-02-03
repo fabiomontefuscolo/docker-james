@@ -38,6 +38,7 @@ FROM openjdk:11-jre AS apache-james
 LABEL maintainer="fabio.montefuscolo@gmail.com"
 COPY --from=builder /james /james
 
+EXPOSE 25 110 143 465 587 993 4000 8000
 ENV PATH=$PATH:/james/bin
 ENV JAMES_HOME=/james
 ENV CLASSPATH_PREFIX=/james/lib/*
