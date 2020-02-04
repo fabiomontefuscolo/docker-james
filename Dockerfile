@@ -7,8 +7,9 @@ RUN git clone                                                                   
         "https://github.com/apache/james-project.git"                               \
         "/build"                                                                    \
     && cd "/build"                                                                  \
-    && mvn package -DskipTests                                                      \
-    && mkdir -p /james/bin                                                          \
+    && mvn package -DskipTests
+
+RUN mkdir -p /james/bin                                                             \
     && mkdir -p /james/conf                                                         \
     && mkdir -p /james/sample/conf/lib                                              \
     && mkdir -p /james/lib                                                          \
