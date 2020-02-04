@@ -13,6 +13,9 @@ RUN mkdir -p /james/bin                                                         
     && mkdir -p /james/conf                                                         \
     && mkdir -p /james/sample/conf/lib                                              \
     && mkdir -p /james/lib                                                          \
+    && mkdir -p /james/var                                                          \
+    && mkdir -p /var/store                                                          \
+    && mkdir -p /var/mail                                                           \
     && cp -a                                                                        \
         /build/server/container/guice/jpa-guice/target/james-server-jpa-guice.lib/* \
         /james/lib/                                                                 \
@@ -32,8 +35,13 @@ RUN mkdir -p /james/bin                                                         
         /build/server/container/guice/jpa-smtp/sample-configuration/*               \
         /james/sample/conf/                                                         \
     && cp -a                                                                        \
+        /build/dockerfiles/run/guice/memory/destination/conf/webadmin.properties    \
+        /james/sample/conf/                                                         \
+    && cp -a                                                                        \
         /build/server/app/target/appassembler/bin/*                                 \
-        /james/bin/
+        /james/bin/                                                                 \
+    && ln -sf /var/store /james/var/store                                           \
+    && ln -sf /var/mail  /james/var/mail
 
 FROM openjdk:11-jre AS apache-james
 LABEL maintainer="fabio.montefuscolo@gmail.com"
