@@ -27,6 +27,9 @@ RUN mkdir -p /james/bin                                                         
         /build/server/container/cli/target/james-server-cli.jar                     \
         /james/lib/                                                                 \
     && cp -a                                                                        \
+        /build/server/data/data-ldap/target/james-server-data-ldap-3.4.0.jar        \
+        /james/lib/                                                                 \
+    && cp -a                                                                        \
         /build/server/app/src/main/resources/*                                      \
         /james/sample/conf/                                                         \
     && cp -a                                                                        \
